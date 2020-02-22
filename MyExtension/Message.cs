@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MyExtension
 {
@@ -6,7 +10,7 @@ namespace MyExtension
     {
         public string SayHello()
         {
-            return "Hello from an extension";
+            return "Hello from MyExtension";
         }
     }
 }

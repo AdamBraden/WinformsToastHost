@@ -47,7 +47,7 @@
     <rescap:Capability Name="runFullTrust" />
   </Capabilities>
   <Extensions>
-    <uap10:Extension Category="windows.hostRuntime" Executable="WinformsToastHost.exe"
+    <uap10:Extension Category="windows.hostRuntime" Executable="WinformsToastHost\WinformsToastHost.exe"
           uap10:RuntimeBehavior="packagedClassicApp"
           uap10:TrustLevel="mediumIL">
       <uap10:HostRuntime Id="WinformsToastHost"/>

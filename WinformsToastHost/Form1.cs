@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 
 namespace WinformsToastHost
 {
@@ -57,14 +48,15 @@ namespace WinformsToastHost
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Assembly a = Assembly.Load(Path.Combine(_myPackagePath, "MyExtension.dll"));
-            // Get the type to use.
-            Type myType = a.GetType("Message");
-            // Get the method to call.
+            //Use the extentions's path which we now have access to via the HostedApp model
+            //to load the extension dll and call a method using reflection
+            AssemblyName an = AssemblyName.GetAssemblyName(Path.Combine(_myPackagePath, "MyExtension.dll"));
+            Assembly a = Assembly.Load(an);
+            Type myType = a.GetType("MyExtension.Message");
             MethodInfo myMethod = myType.GetMethod("SayHello");
-            // Create an instance.
             object obj = Activator.CreateInstance(myType);
-            // Execute the method.
+
+            // Execute the extension method
             Message.Text = myMethod.Invoke(obj, null).ToString();
         }
     }
