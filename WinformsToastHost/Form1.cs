@@ -23,6 +23,14 @@ namespace WinformsToastHost
             //display info to the user
             textblockPackageId.Text = _myPackageId;
             textblockPackagePath.Text = _myPackagePath;
+
+            //compare if the executable directory is the same as the package directory, if so, hide the Load extension UX
+            if (Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location.ToLower()).Contains(_myPackagePath.ToLower()))
+            {
+                LoadAssembly.Visible = false;
+                Message.Visible = false;
+            };
+
         }
 
         private void button1_Click(object sender, EventArgs e)
